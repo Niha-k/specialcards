@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Cards Limited</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- <link rel="stylesheet" href="assets/bootstrap.css"> -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="assets/Bootstrap/bootstrap.css">
+  
+  <link rel="stylesheet" href="assets/Bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/CSS/style.css">
+
+  <link rel="icon" href="images/images.png" type="image/png">
+</head>
+
+<style>
+  #imageid {
+    height: 450px;
+  }
+ .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          
+        }
+  .search-box {
+            display: flex;
+            width: 100%;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+  .category-select {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            font-size: 16px;
+            color: #555;
+            border-right: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .category-select:hover {
+            background-color: #f0f0f0;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-radius: 0 25px 25px 0;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .search-button {
+            padding: 12px 15px;
+            background-color: #ff9900;
+            border: 1px solid #ff9900;
+            color: white;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .search-button:hover {
+            background-color: #e68900;
+        }
+
+        .result-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result-container p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .no-result {
+            color: red;
+        }
+  
+            /* Add this CSS to your stylesheet or within a <style> tag */
+.card {
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition for smooth effect */
+}
+
+.card.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to original position */
+}
+</style>
+
+<body>
+  <!-- navbar -->
+  <nav  class="navbar navbar-expand-lg navbar-dark" style="background-color: #333; font-family: 'Poppins', sans-serif; font-size: 16px;">
+  
+    <style>
+      .navbar{
+        position: static;
+      }
+      .navbar-brand{
+        margin-left: -35px;
+      }
+    </style>
+  
+    <div class="container-fluid">
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img src="logo.png" alt="Logo" style="width: 200px; position: absolute; margin-top: -95px;">
+      </a>
+  
+      <!-- Toggle Button for Mobile View -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html" style="color: #FF6F61; font-weight: 600;" id="no">Home</a>
+          </li>
+  
+          <!-- Categories Dropdown -->
+          <li class="nav-item">
+            <select class="form-select category-select" name="category" style="margin: 0 15px; background-color: #444; color: white; border: none;">
+              <option value="All Categories">All Categories</option>
+              <option value="Birthday Card">Birthday Card</option>
+              <option value="Wish Card">Wish Card</option>
+              <option value="Apologise Card">Apologise Card</option>
+              <option value="Thankyou Card">Thankyou Card</option>
+              <option value="Goodbye Card">Goodbye Card</option>
+              <option value="Wedding Card">Wedding Card</option>
+            </select>
+          </li>
+  
+          <!-- About -->
+          <li class="nav-item">
+            <a class="nav-link" href="about us.html" style="color: white; font-weight: 500;">About Us</a>
+          </li>
+  
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" style="color: white; font-weight: 500;">Contact Us</a>
+          </li>
+  
+          <!-- Search Icon -->
+          <!-- <li class="nav-item"> -->
+            <!-- <button class="btn btn-light" id="searchButton" style="font-size: 18px;">🔍</button> -->
+          <!-- </li> -->
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Hidden Search Bar -->
+    <!-- <div id="searchBar" style="display: none; margin-top: 10px; text-align: center;"> -->
+      <!-- <input type="text" class="form-control" placeholder="Search for something..." style="width: 300px; display: inline-block; border-radius: 5px;"> -->
+      <!-- <button class="btn btn-primary" style="margin-left: 5px;">Search</button> -->
+    <!-- </div> -->
+  </nav>
+
+  <!-- <script>
+    const searchButton = document.getElementById("searchButton");
+    const searchBar = document.getElementById("searchBar");
+  
+    searchButton.addEventListener("click", () => {
+      // Toggle the display of the search bar
+      if (searchBar.style.display === "none") {
+        searchBar.style.display = "block";
+        document.getElementById("no").style.display="none"
+      } else {
+        searchBar.style.display = "none";
+
+        document.getElementById("no").style.display="block"
+      }
+    });
+  </script> -->
+  
+  <!-- my slider -->
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img id="imageid" src="assets/slider images/1.jpeg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img id="imageid" src="assets/slider images/2.jpeg" class="d-block w-100" alt="...">
+        <div class="carousel-caifption d-none d-md-block">
+          
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img id="imageid" src="assets/slider images/3.jpeg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Product Card 1 -->
+      <div class="col-md-3 mb-4 image birthday ">      
+        <div class="card">
+          <a href="assets/extra/b1.html">
+          <img src="New images/pexels-photo-12955484.webp">
+          </a>
+          <div class="card-body">
+            <p class="card-text">birthday card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/b1.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+  
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="col-md-3 mb-4 image wish">
+        <div class="card">
+          <a href="assets/extra/w1.html">
+          <img src="New images/wish card.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">wish card</p>
+            <p class="card-price">$75.00</p>
+            <a href="assets/extra/w1.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="col-md-3 mb-4 image apologize ">
+        <div class="card">
+         <a href="assets/extra/a1.html">
+          <img src="New images/apolo.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">apologize card</p>
+            <p class="card-price">$30.00</p>
+            <a href="assets/extra/a1.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="col-md-3 mb-4 image thankyou">
+        <div class="card">
+          <a href="assets/extra/t1.html">
+          <img src="New images/thank you card.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">thankyou card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/t1.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Product Card 5 -->
+      <div class="col-md-3 mb-4 image goodbye">
+        <div class="card">
+          <a href="assets/extra/g1.html">
+          <img src="New images/goodbye card.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">goodbye card </p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/g1.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 6 -->
+      <div class="col-md-3 mb-4 image wedding">
+        <div class="card">
+          <a href="assets/extra/we1.html">
+          <img src="New images/wedding card.jpg" class="card-img-top" alt="Product">
+          </a>
+          <div class="card-body">
+            <p class="card-text">wedding card</p>
+            <p class="card-price">$75.00</p>
+            <a href="assets/extra/we1.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 7 -->
+      <div class="col-md-3 mb-4 image birthday">
+        <div class="card">
+          <a href="assets/extra/b2.html">
+          <img src="New images/pexels-photo-4439461.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">birthday card</p>
+            <p class="card-price">$30.00</p>
+            <a href="assets/extra/b2.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 8 -->
+      <div class="col-md-3 mb-4 image wish">
+        <div class="card">
+          <a href="assets/extra/w2.html">
+          <img src="New images/wish card 2.jpg" class="card-image-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">wish card</p>
+            <p class="card-price">$90.00</p>
+            <a href="assets/extra/w2.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Product Card 1 -->
+      <div class="col-md-3 mb-4 image apologize">
+        <div class="card">
+          <a href="assets/extra/a2.html">
+          <img src="New images/apolo 2.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">apologize card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/a2.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="col-md-3 mb-4 image thankyou">
+        <div class="card">
+          <a href="assets/extra/t2.html"> 
+          <img src="New images/thank you card 2.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">thankyou card</p>
+            <p class="card-price">$75.00</p>
+            <a href="assets/extra/t2.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="col-md-3 mb-4 image goodbye">
+        <div class="card">
+          <a href="assets/extra/g2.html">
+          <img src="New images/goodbye card 2.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">goodbye card</p>
+            <p class="card-price">$30.00</p>
+            <a href="assets/extra/g2.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="col-md-3 mb-4 image wedding">
+        <div class="card">
+          <a href="assets/extra/g2.html">
+          <img src="New images/wedding card 2.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">wedding card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/g2.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Product Card 5 -->
+      <div class="col-md-3 mb-4 image birthday">
+        <div class="card">
+          <a href="assets/extra/b3.html">
+          <img src="New images/pexels-photo-4439464.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">birthday card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/b3.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 6 -->
+      <div class="col-md-3 mb-4 image wish">
+        <div class="card">
+          <a href="assets/extra/w3.html">
+          <img src="New images/wish card 3.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">wish card</p>
+            <p class="card-price">$75.00</p>
+            <a href="assets/extra/w3.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 7 -->
+      <div class="col-md-3 mb-4 image apologize">
+        <div class="card">
+          <a href="assets/extra/a3.html">
+          <img src="New images/apolo 3.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">apologize card</p>
+            <p class="card-price">$30.00</p>
+            <a href="assets/extra/a3.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 8 -->
+      <div class="col-md-3 mb-4 image thankyou">
+        <div class="card">
+          <a href="assets/extra/t3.html">
+          <img src="New images/thank you card 3.jpeg" class="card-image-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">thankyou card</p>
+            <p class="card-price">$90.00</p>
+            <a href="assets/extra/t3.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Product Card 1 -->
+      <div class="col-md-3 mb-4 image goodbye">
+        <div class="card">
+          <a href="assets/extra/g3.html">
+          <img src="New images/goodbye card 3.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">goodbye card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/g3.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="col-md-3 mb-4 image wedding">
+        <div class="card">
+          <a href="assets/extra/we3.html">
+          <img src="New images/wedding card 3.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">wedding card</p>
+            <p class="card-price">$75.00</p>
+            <a href="assets/extra/we3.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="col-md-3 mb-4 image birthday">
+        <div class="card">
+          <a href="assets/extra/b4.html">
+          <img src="New images/pexels-photo-8015238.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">birthday card</p>
+            <p class="card-price">$30.00</p>
+            <a href="assets/extra/b4.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="col-md-3 mb-4 image wish">
+        <div class="card">
+          <a href="assets/extra/we4.html">
+          <img src="New images/wish card 4.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">wish card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/we4.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Product Card 5 -->
+      <div class="col-md-3 mb-4 image apologize">
+        <div class="card">
+          <a href="assets/extra/a4.html">
+          <img src="New images/apolo 4.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">apologize card</p>
+            <p class="card-price">$50.00</p>
+            <a href="assets/extra/a4.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 6 -->
+      <div class="col-md-3 mb-4 image thankyou">
+        <div class="card">
+          <a href="assets/extra/t4.html">
+          <img src="New images/thank you card 4.webp" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">thankyou card</p>
+            <p class="card-price">$75.00</p>
+            <a href="assets/extra/t4.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 7 -->
+      <div class="col-md-3 mb-4 image goodbye">
+        <div class="card">
+          <a href="assets/extra/g4.html">
+          <img src="New images/goodbye card 4.jpg" class="card-img-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">goodbye card</p>
+            <p class="card-price">$30.00</p>
+            <a href="assets/extra/g4.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 8 -->
+      <div class="col-md-3 mb-4 image wedding">
+        <div class="card">
+          <a href="assets/extra/we4.html">
+          <img src="New images/wedding card 4.jpg" class="card-image-top" alt="Product">
+        </a>
+          <div class="card-body">
+            <p class="card-text">wedding card</p>
+            <p class="card-price">$90.00</p>
+            <a href="assets/extra/we4.html" class="btn btn-primary">Buy Now</a> <!-- Changed button text to "Buy" -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- footer section -->
+
+  <!-- Footer -->
+  <footer id="footer">
+    <style>
+        #footer {
+            background: #15161D;
+            color: #B9BABC;
+            padding: 30px 0; /* Better spacing */
+        }
+
+        #bottom-footer {
+            background: #1E1F29;
+            padding: 20px 0; /* Consistent spacing */
+        }
+
+        .footer {
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer .footer-title {
+            color: #FFF;
+            text-transform: uppercase;
+            font-size: 18px;
+            margin: 0 0 20px; /* Proper spacing */
+        }
+
+        .footer-links li + li {
+            margin-top: 10px; /* Compact spacing */
+        }
+
+        .footer-links li a {
+            color: #B9BABC;
+            text-decoration: none; /* No underline */
+        }
+
+        .footer-links li i {
+            margin-right: 10px; /* Proper spacing */
+            color: #D10024;
+            width: 14px;
+            text-align: center;
+        }
+
+        .footer-links li a:hover {
+            color: #D10024;
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .copyright {
+            margin-top: 20px;
+            display: block;
+            font-size: 12px;
+        }
+
+        .footer-payments li {
+            display: inline-block;
+            margin-right: 15px; /* Balanced spacing */
+        }
+
+        .footer-payments li a {
+            color: #15161D;
+            font-size: 24px; /* Clear visibility */
+            display: block;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer {
+                margin-bottom: 20px; /* Adjust for small screens */
+            }
+        }
+    </style>
+
+    <!-- Top Footer -->
+    <div class="section">
+        <div class="container footer-container">
+            <!-- About Us -->
+            <div class="footer">
+                <h3 class="footer-title">More About Us</h3>
+                <p>WE DEALS IN VAST VARIETY OF CARDS</p>
+                <ul class="footer-links">
+                    <li><i class="fa fa-map-marker"></i>Garden Road</a></li>
+                    <li><i class="fa fa-phone"></i>+92 310 3860653</a></li>
+                    <li><i class="fa fa-envelope-o"></i>redcardslimited@gmail.com</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="footer">
+                <h3 class="footer-title">Categories</h3>
+                <ul class="footer-links">
+                    <li>Birthday Card</li>
+                    <li>Wish Card</li>
+                    <li>Thankyou Card</li>
+                    <li>Apologize Card</li>
+                    <li>Wedding Card</li>
+                    <li>Goodbye Card</li>
+                </ul>
+            </div>
+
+            <!-- Information -->
+            <div class="footer">
+                <h3 class="footer-title">Information</h3>
+                <ul class="footer-links">
+                    <li><a href="about us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy policy.html">Privacy Policy</a></li>
+                    <li><a href="orders and returns.html">Orders and Returns</a></li>
+                    <li><a href="terms & condition.html">Terms & Conditions</a></li>
+                </ul>
+              </div>            
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div id="bottom-footer" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="footer-payments">
+                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                    </ul>
+                    <span class="copyright">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+  <!-- Footer -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+
+    <script src="./assets/jquery-3.7.1.min.js"></script>
+   <script>
+    $(document).ready(function () {
+  $(".button").click(function (e) {
+    e.preventDefault(); // Prevent default link behavior
+
+    // Remove 'active' class from all buttons
+    $(".button").removeClass("active");
+
+    // Add 'active' class to the clicked button
+    $(this).addClass("active");
+
+    // Get the filter category from the data attribute
+    let filter = $(this).attr("data-filter");
+
+    // Show all images if 'all' is selected, otherwise filter by category
+    if (filter === "all") {
+      $(".image").show(); // Show all content
+    } else {
+      $(".image").hide(); // Hide all content
+      $("." + filter).show(); // Show only the selected category
+    }
+  });
+});
+
+   </script>
+
+   <script>
+    // Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the category select element
+  const categorySelect = document.querySelector('.category-select');
+  const searchInput = document.querySelector('.search-input');
+  const searchButton = document.querySelector('.search-button');
+
+  // Function to filter products
+  function filterProducts(category) {
+      // Get all product cards
+      const products = document.querySelectorAll('.col-md-3.mb-4');
+      
+      // Show/hide products based on category
+      products.forEach(product => {
+          // Convert the selected category to match the card types in your HTML
+          let categoryClass;
+          switch(category) {
+              case 'Birthday Card':
+                  categoryClass = 'birthday';
+                  break;
+              case 'Wish Card':
+                  categoryClass = 'wish';
+                  break;
+              case 'Apologise Card':
+                  categoryClass = 'apologize';
+                  break;
+              case 'Thankyou Card':
+                  categoryClass = 'thankyou';
+                  break;
+              case 'Goodbye Card':
+                  categoryClass = 'goodbye';
+                  break;
+              case 'Wedding Card':
+                  categoryClass = 'wedding';
+                  break;
+              default:
+                  categoryClass = 'all';
+          }
+
+          if (categoryClass === 'all' || category === 'All Categories') {
+              product.style.display = 'block';
+          } else {
+              if (product.classList.contains(categoryClass)) {
+                  product.style.display = 'block';
+              } else {
+                  product.style.display = 'none';
+              }
+          }
+      });
+
+      // Update results count
+      updateResultsCount();
+  }
+
+  // Add change event listener to category select
+  categorySelect.addEventListener('change', function(e) {
+      const selectedCategory = e.target.value;
+      filterProducts(selectedCategory);
+      
+      // Update search input placeholder based on category
+      searchInput.placeholder = `Search in ${selectedCategory}...`;
+  });
+
+  // Add click event listener to search button
+  searchButton.addEventListener('click', performSearch);
+
+  // Function to perform search
+  function performSearch() {
+      const selectedCategory = categorySelect.value;
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      // Get all product cards
+      const products = document.querySelectorAll('.col-md-3.mb-4');
+      
+      products.forEach(product => {
+          const productText = product.querySelector('.card-text').textContent.toLowerCase();
+          let categoryClass;
+          
+          // Convert the selected category to match the card types
+          switch(selectedCategory) {
+              case 'Birthday Card':
+                  categoryClass = 'birthday';
+                  break;
+              case 'Wish Card':
+                  categoryClass = 'wish';
+                  break;
+              case 'Apologise Card':
+                  categoryClass = 'apologize';
+                  break;
+              case 'Thankyou Card':
+                  categoryClass = 'thankyou';
+                  break;
+              case 'Goodbye Card':
+                  categoryClass = 'goodbye';
+                  break;
+              case 'Wedding Card':
+                  categoryClass = 'wedding';
+                  break;
+              default:
+                  categoryClass = 'all';
+          }
+
+          const matchesSearch = searchTerm === '' || productText.includes(searchTerm);
+          const matchesCategory = categoryClass === 'all' || 
+                                selectedCategory === 'All Categories' ||
+                                product.classList.contains(categoryClass);
+          
+          product.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
+      });
+
+      // Update results count
+      updateResultsCount();
+  }
+
+  // Function to update the results count
+  function updateResultsCount() {
+      const visibleProducts = document.querySelectorAll('.col-md-3.mb-4[style="display: block;"]');
+      const resultContainer = document.getElementById('resultContainer');
+      const resultText = document.getElementById('resultText');
+      
+      resultContainer.style.display = 'block';
+      if (visibleProducts.length === 0) {
+          resultText.textContent = 'No products found';
+          resultText.classList.add('no-result');
+      } else {
+          resultText.textContent = `Found ${visibleProducts.length} products`;
+          resultText.classList.remove('no-result');
+      }
+  }
+
+  // Add event listener for the search input
+  searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+          performSearch();
+      }
+  });
+});
+   </script>
+
+   <script>
+    // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('.search-input');
+  const searchButton = document.querySelector('.search-button');
+  const categorySelect = document.querySelector('.category-select');
+  
+  // Create suggestions container
+  const suggestionsContainer = document.createElement('div');
+  suggestionsContainer.className = 'suggestions-container';
+  suggestionsContainer.style.cssText = `
+      position: absolute;
+      width: calc(100% - 200px);  /* Adjust based on category select width */
+      max-height: 200px;
+      overflow-y: auto;
+      background: white;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  `;
+  searchInput.parentElement.style.position = 'relative';
+  searchInput.parentElement.appendChild(suggestionsContainer);
+
+  // Get all available card types and texts
+  function getAllCardData() {
+      const cards = document.querySelectorAll('.col-md-3.mb-4');
+      const cardData = [];
+      cards.forEach(card => {
+          const text = card.querySelector('.card-text').textContent.toLowerCase();
+          const classes = Array.from(card.classList);
+          const type = classes.find(cls => 
+              ['birthday', 'wish', 'apologize', 'thankyou', 'goodbye', 'wedding'].includes(cls)
+          );
+          cardData.push({ text, type });
+      });
+      return cardData;
+  }
+
+  // Function to show suggestions
+  function showSuggestions(searchTerm) {
+      const cardData = getAllCardData();
+      const selectedCategory = categorySelect.value;
+      
+      // Filter suggestions based on search term and category
+      const suggestions = cardData.filter(card => {
+          const matchesSearch = card.text.includes(searchTerm.toLowerCase());
+          const matchesCategory = selectedCategory === 'All Categories' || 
+                                card.type === selectedCategory.toLowerCase().replace(' card', '');
+          return matchesSearch && matchesCategory;
+      });
+
+      // Clear previous suggestions
+      suggestionsContainer.innerHTML = '';
+      
+      if (searchTerm && suggestions.length > 0) {
+          suggestions.forEach(suggestion => {
+              const div = document.createElement('div');
+              div.className = 'suggestion-item';
+              div.textContent = suggestion.text;
+              div.style.cssText = `
+                  padding: 8px 12px;
+                  cursor: pointer;
+                  hover: background-color: #f5f5f5;
+              `;
+              div.addEventListener('mouseover', () => {
+                  div.style.backgroundColor = '#f5f5f5';
+              });
+              div.addEventListener('mouseout', () => {
+                  div.style.backgroundColor = 'white';
+              });
+              div.addEventListener('click', () => {
+                  searchInput.value = suggestion.text;
+                  suggestionsContainer.style.display = 'none';
+                  performSearch();
+              });
+              suggestionsContainer.appendChild(div);
+          });
+          suggestionsContainer.style.display = 'block';
+      } else {
+          suggestionsContainer.style.display = 'none';
+      }
+  }
+
+  // Function to perform search
+  function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categorySelect.value;
+      const products = document.querySelectorAll('.col-md-3.mb-4');
+      let foundResults = false;
+
+      products.forEach(product => {
+          const productText = product.querySelector('.card-text').textContent.toLowerCase();
+          let categoryClass;
+          
+          // Convert the selected category to match the card types
+          switch(selectedCategory) {
+              case 'Birthday Card':
+                  categoryClass = 'birthday';
+                  break;
+              case 'Wish Card':
+                  categoryClass = 'wish';
+                  break;
+              case 'Apologise Card':
+                  categoryClass = 'apologize';
+                  break;
+              case 'Thankyou Card':
+                  categoryClass = 'thankyou';
+                  break;
+              case 'Goodbye Card':
+                  categoryClass = 'goodbye';
+                  break;
+              case 'Wedding Card':
+                  categoryClass = 'wedding';
+                  break;
+              default:
+                  categoryClass = 'all';
+          }
+
+          const matchesSearch = searchTerm === '' || productText.includes(searchTerm);
+          const matchesCategory = categoryClass === 'all' || 
+                                selectedCategory === 'All Categories' ||
+                                product.classList.contains(categoryClass);
+          
+          if (matchesSearch && matchesCategory) {
+              product.style.display = 'block';
+              foundResults = true;
+          } else {
+              product.style.display = 'none';
+          }
+      });
+
+      // Show/hide no results message
+      const resultContainer = document.getElementById('resultContainer');
+      const resultText = document.getElementById('resultText');
+      
+      resultContainer.style.display = 'block';
+      if (!foundResults) {
+          resultText.textContent = 'No products found';
+          resultText.classList.add('no-result');
+      } else {
+          const visibleProducts = document.querySelectorAll('.col-md-3.mb-4[style="display: block;"]');
+          resultText.textContent = `Found ${visibleProducts.length} products`;
+          resultText.classList.remove('no-result');
+      }
+  }
+
+  // Event Listeners
+  searchInput.addEventListener('input', function() {
+      showSuggestions(this.value);
+  });
+
+  searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+          performSearch();
+          suggestionsContainer.style.display = 'none';
+      }
+  });
+
+  searchButton.addEventListener('click', function() {
+      performSearch();
+      suggestionsContainer.style.display = 'none';
+  });
+
+  // Close suggestions when clicking outside
+  document.addEventListener('click', function(e) {
+      if (!e.target.closest('.search-box')) {
+          suggestionsContainer.style.display = 'none';
+      }
+  });
+
+  // Category change handler
+  categorySelect.addEventListener('change', function() {
+      if (searchInput.value) {
+          performSearch();
+      }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const cards = document.querySelectorAll('.card');
+
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target); // Stop observing once the card is visible
+          }
+      });
+  });
+
+  cards.forEach(card => {
+      observer.observe(card); // Observe each card
+  });
+});
+   </script>
+   
+
+   
+
+  <!-- <script src="assets/bootstrap.bundle.js"></script> -->
+
+  <!-- <script src="assets/bootstrap.bundle.min.js"></script> -->
+</body>
+
+</html>

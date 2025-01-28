@@ -1,0 +1,59 @@
+@media (max-width: 768px) {
+    #carouselExampleCaptions .carousel-inner img {
+      height: 300px;
+      object-fit: cover; /* Ensures the image scales appropriately */
+    }
+  }
+  
+ul li a{
+  margin: 15px;
+} 
+.card{
+  height: 350px;
+}
+
+.card img{
+  width: 100%;
+  height: 200px;
+}
+
+
+/* Card hover animation */
+
+/* Base card styles */
+
+ 
+/* Base card styles */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border-radius: 10px; /* Smooth corners for a polished look */
+    overflow: hidden;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Button hover effect */
+.card .btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover .btn {
+    background-color: #ff6f61; /* Change button color on hover */
+    transform: scale(1.05); /* Slightly enlarge button */
+}
+
+/* Subtle image zoom effect */
+.card img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+

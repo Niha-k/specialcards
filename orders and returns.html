@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order and Returns</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --border-color: #e5e7eb;
+            --spacing-unit: 1.5rem;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-gray);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .content-wrapper {
+            background: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        li strong {
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-info {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6b7280;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth hover effects */
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <h1>Order and Returns</h1>
+
+            <div class="section">
+                <h2>Order Policy</h2>
+                <p>Thank you for shopping with us! Below are the details of our ordering process:</p>
+                <ul>
+                    <li>
+                        <strong>Order Confirmation</strong>
+                        After you place an order, you will receive an order confirmation email with your order number and details.
+                    </li>
+                    <li>
+                        <strong>Payment</strong>
+                        We accept various forms of payment including credit/debit cards, PayPal, and other secure methods.
+                    </li>
+                    <li>
+                        <strong>Shipping</strong>
+                        Orders are processed and shipped within 1-2 business days. Shipping times vary depending on your location.
+                    </li>
+                    <li>
+                        <strong>Delivery</strong>
+                        We offer various delivery options including standard and expedited shipping.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Returns Policy</h2>
+                <p>If you're not completely satisfied with your purchase, you can return it within 30 days of receiving your order. Please review our return process below:</p>
+                <ul>
+                    <li>
+                        <strong>Return Eligibility</strong>
+                        Items must be unused, in original packaging, and in resellable condition to qualify for a return.
+                    </li>
+                    <li>
+                        <strong>Return Process</strong>
+                        To initiate a return, contact us with your order number and reason for return. We will provide you with a return authorization and instructions.
+                    </li>
+                    <li>
+                        <strong>Refunds</strong>
+                        Once your return is received and inspected, a refund will be processed to your original payment method within 5-7 business days.
+                    </li>
+                    <li>
+                        <strong>Exchanges</strong>
+                        If you'd like to exchange an item, we can assist you with the exchange process based on availability.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Non-Returnable Items</h2>
+                <p>Some items cannot be returned due to hygiene reasons, or they may be marked as "Final Sale" at the time of purchase. These include:</p>
+                <ul>
+                    <li>Personalized items</li>
+                    <li>Open software or digital downloads</li>
+                    <li>Gift cards</li>
+                    <li>Items marked as non-returnable during checkout</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <p>If you have any questions regarding our order or returns process, please feel free to reach out to our customer service team:</p>
+                    <p>Email: <a href="mailto:contact@company.com">contact@company.com</a></p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>&copy; 2025 Company Name. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
